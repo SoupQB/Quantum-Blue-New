@@ -1,6 +1,6 @@
 - type: gameMap
   id: Hummingbird
-  mapName: 'Hummingbird'
+  mapName: 'Hummingbird Station'
   mapPath: /Maps/_Impstation/hummingbird.yml
   minPlayers: 35
   maxPlayers: 64
