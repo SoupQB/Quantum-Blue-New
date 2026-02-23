@@ -5,9 +5,6 @@ using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Clothing;
 using Content.Shared.Database;
-using Content.Shared.IdentityManagement;
-using Content.Shared.IdentityManagement.Components;
-using Content.Shared.Implants;
 using Content.Shared.Inventory;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
@@ -30,7 +27,6 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly IdentitySystem _identity = default!;
 
     // CCVar.
     private int _maxNameLength;
@@ -38,11 +34,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeakerNameEvent>>(OnTransformSpeakerNameInventory);
-        SubscribeLocalEvent<VoiceMaskComponent, ImplantRelayEvent<TransformSpeakerNameEvent>>(OnTransformSpeakerNameImplant);
-        SubscribeLocalEvent<VoiceMaskComponent, ImplantRelayEvent<SeeIdentityAttemptEvent>>(OnSeeIdentityAttemptEvent);
-        SubscribeLocalEvent<VoiceMaskComponent, ImplantImplantedEvent>(OnImplantImplantedEvent);
-        SubscribeLocalEvent<VoiceMaskComponent, ImplantRemovedEvent>(OnImplantRemovedEventEvent);
+        SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeakerNameEvent>>(OnTransformSpeakerName);
         SubscribeLocalEvent<VoiceMaskComponent, LockToggledEvent>(OnLockToggled);
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeNameMessage>(OnChangeName);
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeVerbMessage>(OnChangeVerb);
@@ -57,56 +49,10 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         Subs.CVar(_cfgManager, CCVars.MaxNameLength, value => _maxNameLength = value, true);
     }
 
-    /// <summary>
-    ///     Hides accent if the voice mask is on and the option to block accents is on
-    /// </summary>
-    private void TransformSpeech(Entity<VoiceMaskComponent> entity, TransformSpeechEvent args)
+    private void OnTransformSpeakerName(Entity<VoiceMaskComponent> entity, ref InventoryRelayedEvent<TransformSpeakerNameEvent> args)
     {
-        if (entity.Comp.AccentHide && entity.Comp.Active)
-            args.Cancel();
-    }
-
-    private void OnTransformSpeech(Entity<VoiceMaskComponent> entity, ref TransformSpeechEvent args)
-    {
-        TransformSpeech(entity, args);
-    }
-
-    private void OnTransformSpeechInventory(Entity<VoiceMaskComponent> entity, ref InventoryRelayedEvent<TransformSpeechEvent> args)
-    {
-        TransformSpeech(entity, args.Args);
-    }
-
-    private void OnTransformSpeechImplant(Entity<VoiceMaskComponent> entity, ref ImplantRelayEvent<TransformSpeechEvent> args)
-    {
-        TransformSpeech(entity, args.Event);
-    }
-
-    private void OnTransformSpeakerNameInventory(Entity<VoiceMaskComponent> entity, ref InventoryRelayedEvent<TransformSpeakerNameEvent> args)
-    {
-        TransformVoice(entity, args.Args);
-    }
-
-    private void OnTransformSpeakerNameImplant(Entity<VoiceMaskComponent> entity, ref ImplantRelayEvent<TransformSpeakerNameEvent> args)
-    {
-        TransformVoice(entity, args.Event);
-    }
-
-    private void OnSeeIdentityAttemptEvent(Entity<VoiceMaskComponent> entity, ref ImplantRelayEvent<SeeIdentityAttemptEvent> args)
-    {
-        if (!entity.Comp.OverrideIdentity || !entity.Comp.Active)
-            return;
-
-        args.Event.NameOverride = GetCurrentVoiceName(entity);
-    }
-
-    private void OnImplantImplantedEvent(Entity<VoiceMaskComponent> entity, ref ImplantImplantedEvent ev)
-    {
-        _identity.QueueIdentityUpdate(ev.Implanted);
-    }
-
-    private void OnImplantRemovedEventEvent(Entity<VoiceMaskComponent> entity, ref ImplantRemovedEvent ev)
-    {
-        _identity.QueueIdentityUpdate(ev.Implanted);
+        args.Args.VoiceName = GetCurrentVoiceName(entity);
+        args.Args.SpeechVerb = entity.Comp.VoiceMaskSpeechVerb ?? args.Args.SpeechVerb;
     }
 
     private void OnLockToggled(Entity<VoiceMaskComponent> ent, ref LockToggledEvent args)
@@ -138,9 +84,6 @@ public sealed partial class VoiceMaskSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("voice-mask-popup-failure"), entity, message.Actor, PopupType.SmallCaution);
             return;
         }
-
-        var nameUpdatedEvent = new VoiceMaskNameUpdatedEvent(entity, entity.Comp.VoiceMaskName, message.Name);
-        RaiseLocalEvent(message.Actor, ref nameUpdatedEvent);
 
         entity.Comp.VoiceMaskName = message.Name;
         _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(message.Actor):player} set voice of {ToPrettyString(entity):mask}: {entity.Comp.VoiceMaskName}");
@@ -201,15 +144,6 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     private string GetCurrentVoiceName(Entity<VoiceMaskComponent> entity)
     {
         return entity.Comp.VoiceMaskName ?? Loc.GetString("voice-mask-default-name-override");
-    }
-
-    private void TransformVoice(Entity<VoiceMaskComponent> entity, TransformSpeakerNameEvent args)
-    {
-        if (!entity.Comp.Active)
-            return;
-
-        args.VoiceName = GetCurrentVoiceName(entity);
-        args.SpeechVerb = entity.Comp.VoiceMaskSpeechVerb ?? args.SpeechVerb;
     }
     #endregion
 }
