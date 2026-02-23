@@ -65,7 +65,7 @@
     speedModifierThresholds:
       25: 0.5
   - type: Stamina
-    baseCritThreshold: 200
+    critThreshold: 200
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -139,7 +139,7 @@
       0: Alive
       100: Dead
   - type: Stamina
-    baseCritThreshold: 300
+    critThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
       50: 0.7
@@ -495,7 +495,7 @@
   - type: ComplexInteraction
   - type: MobState
   - type: Stamina
-    baseCritThreshold: 200
+    critThreshold: 200
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

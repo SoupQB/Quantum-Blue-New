@@ -7,7 +7,7 @@ namespace Content.Shared.Damage.Components;
 /// Multiplies the entity's <see cref="StaminaComponent.StaminaDamage"/> by the <see cref="Modifier"/>.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedStaminaSystem))]
-public sealed partial class StaminaModifierStatusEffectComponent : Component
+public sealed partial class StaminaModifierComponent : Component
 {
     /// <summary>
     /// What to multiply max stamina by.
