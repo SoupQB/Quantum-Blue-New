@@ -145,11 +145,5 @@
 - type: lobbyBackground
   id: hercrystal
   background: /Textures/_Impstation/LobbyScreens/her_crystal.webp
-  title: lobby-state-background-hercrystal-title
-  artist: lobby-state-background-hercrystal-artist
-
-- type: lobbyBackground
-  id: AllAboard
-  background: /Textures/_Impstation/LobbyScreens/all_aboard.webp
-  title: lobby-state-background-allaboard-title
-  artist: lobby-state-background-allaboard-artist
+  name: She's in there
+  artist: FlapWrap
