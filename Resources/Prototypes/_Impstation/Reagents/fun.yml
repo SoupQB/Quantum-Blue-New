@@ -362,54 +362,14 @@
         - "something-effect-change"
         - "something-effect-feeling"
         probability: 0.2
-
-- type: reagent
-  id: Ants
-  name: reagent-name-ants
-  group: Toxins
-  slipData:
-    requiredSlipSpeed: 3.5
-  desc: reagent-desc-ants
-  physicalDesc: reagent-physical-desc-ants
-  flavor: ants
-  color: "#2d231f"
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        ignoreResistances: false
-        damage:
-          types:
-            Piercing: 0.05
-      - !type:Emote
-        emote: Scream
-        probability: 0.7
-  metabolisms:
-    Poison:
-      metabolismRate : 3.00
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-             Piercing : 1
-      - !type:PopupMessage
-        type: Local
-        visualType: LargeCaution
-        messages: [ "ant-effect-biting-insides"]
-        probability: 0.33
-      - !type:Emote
-        emote: Scream
-        probability: 0.3
-
 - type: reagent
   id: LiftingConcentrate
-  name: reagent-name-lifting-concentrate
   group: Narcotics
-  desc: reagent-desc-lifting-concentrate
+  name: reagent-name-lifting-concentrate
   physicalDesc: reagent-physical-desc-floral
-  flavor: lightactually
+  desc: reagent-desc-lifting-concentrate
   color: "#72e9d5"
+  flavor: lightactually
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -419,8 +379,8 @@
         type: Update
         time: 3
   metabolisms:
-    Narcotic:
       effects:
       - !type:ModifyStatusEffect
+    Narcotic:
         effectProto: StatusEffectFloating
         type: Update

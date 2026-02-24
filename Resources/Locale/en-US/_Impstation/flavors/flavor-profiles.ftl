@@ -9,8 +9,6 @@ flavor-base-weird = weird
 flavor-base-ectoplasm = ghastly
 flavor-base-fatty = fatty
 flavor-base-gooey = gooey
-flavor-base-ants = like ants
-flavor-base-light = light
 
 flavor-complex-raktaccino = fantastically bitter
 flavor-complex-moscowmule = like a kick in the teeth
