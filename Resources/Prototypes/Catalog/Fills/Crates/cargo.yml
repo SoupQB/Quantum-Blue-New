@@ -207,7 +207,8 @@
     - id: PlushieMoth
     - id: PlushieVulp
     - id: PlushieArachind
-    - id: PlushieLizardJobMultiweh # the exceedingly rare multiweh!
+      prob: 0.01
+      orGroup: Plushies
     - id: PlushieThrongler #hehe
       weight: 0.05
     - id: PrizeBall # imp. let's go gambling!

@@ -116,8 +116,6 @@
         - id: PlushieSpaceLizard
           amount: !type:ConstantNumberSelector
             value: 3
-        - id: PlushieLizardJobMultiweh # the exceedingly rare multiweh!
-          prob: 0.01
 
 - type: entity
   parent: CrateGenericSteel
