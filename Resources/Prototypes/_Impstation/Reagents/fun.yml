@@ -362,14 +362,15 @@
         - "something-effect-change"
         - "something-effect-feeling"
         probability: 0.2
+
 - type: reagent
   id: LiftingConcentrate
-  group: Narcotics
   name: reagent-name-lifting-concentrate
-  physicalDesc: reagent-physical-desc-floral
+  group: Narcotics
   desc: reagent-desc-lifting-concentrate
-  color: "#72e9d5"
+  physicalDesc: reagent-physical-desc-floral
   flavor: lightactually
+  color: "#72e9d5"
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -379,8 +380,8 @@
         type: Update
         time: 3
   metabolisms:
+    Narcotic:
       effects:
       - !type:ModifyStatusEffect
-    Narcotic:
         effectProto: StatusEffectFloating
         type: Update

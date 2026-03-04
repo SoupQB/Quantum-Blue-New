@@ -141,9 +141,3 @@
   background: /Textures/_Impstation/LobbyScreens/silicon_world.webp
   title: lobby-state-background-siliconworld-title
   artist: lobby-state-background-siliconworld-artist
-
-- type: lobbyBackground
-  id: hercrystal
-  background: /Textures/_Impstation/LobbyScreens/her_crystal.webp
-  name: She's in there
-  artist: FlapWrap
