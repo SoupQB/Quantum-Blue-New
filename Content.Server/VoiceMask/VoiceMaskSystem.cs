@@ -1,19 +1,20 @@
-using Content.Server.Speech;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Clothing;
 using Content.Shared.Database;
+using Content.Shared.IdentityManagement;
+using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
+using Content.Shared.Preferences;
 using Content.Shared.Speech;
 using Content.Shared.VoiceMask;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-using Content.Shared.Implants; // imp
 
 namespace Content.Server.VoiceMask;
 
@@ -27,6 +28,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly IdentitySystem _identity = default!;
 
     // CCVar.
     private int _maxNameLength;
@@ -42,12 +44,11 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskAccentToggleMessage>(OnAccentToggle);
         SubscribeLocalEvent<VoiceMaskComponent, ClothingGotEquippedEvent>(OnEquip);
         SubscribeLocalEvent<VoiceMaskSetNameEvent>(OpenUI);
-        SubscribeLocalEvent<VoiceMaskComponent, TransformSpeechEvent>(OnTransformSpeech, before: [typeof(AccentSystem)]);
-        SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeechEvent>>(OnTransformSpeechInventory, before: [typeof(AccentSystem)]);
-        SubscribeLocalEvent<VoiceMaskComponent, ImplantRelayEvent<TransformSpeechEvent>>(OnTransformSpeechImplant, before: [typeof(AccentSystem)]);
 
         Subs.CVar(_cfgManager, CCVars.MaxNameLength, value => _maxNameLength = value, true);
     }
+
+
 
     private void OnTransformSpeakerName(Entity<VoiceMaskComponent> entity, ref InventoryRelayedEvent<TransformSpeakerNameEvent> args)
     {
@@ -107,6 +108,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         _popupSystem.PopupEntity(Loc.GetString("voice-mask-popup-accent-toggle"), entity, args.Actor);
         entity.Comp.AccentHide = !entity.Comp.AccentHide;
     }
+
     #endregion
 
     #region UI
@@ -115,8 +117,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         if (_lock.IsLocked(uid))
             return;
 
-        if (component.AddAction) // imp
-            _actions.AddAction(args.Wearer, ref component.ActionEntity, component.Action, uid);
+        _actions.AddAction(args.Wearer, ref component.ActionEntity, component.Action, uid);
     }
 
     private void OpenUI(VoiceMaskSetNameEvent ev)
@@ -145,5 +146,15 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     {
         return entity.Comp.VoiceMaskName ?? Loc.GetString("voice-mask-default-name-override");
     }
+
+    private void TransformVoice(Entity<VoiceMaskComponent> entity, TransformSpeakerNameEvent args)
+    {
+        if (!entity.Comp.Active)
+            return;
+
+        args.VoiceName = GetCurrentVoiceName(entity);
+        args.SpeechVerb = entity.Comp.VoiceMaskSpeechVerb ?? args.SpeechVerb;
+    }
+
     #endregion
 }
