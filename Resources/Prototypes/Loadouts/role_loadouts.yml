@@ -483,6 +483,7 @@
   - HeadofSecurityBackpack # imp SecurityBackpack > HeadofSecurityBackpack
   - SurvivalSecurityCommand # imp SurvivalSecurity > SurvivalSecurityCommand
   - Trinkets
+  - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - GroupBreathToolDecapoid # imp special
   - GroupTankHarnessCommandWithOuterwear # imp GroupTankHarness > GroupTankHarnessCommandWithOuterwear
