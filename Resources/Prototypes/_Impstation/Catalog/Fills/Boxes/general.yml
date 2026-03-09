@@ -8,9 +8,10 @@
     size: Normal
     shape:
     - 0,0,0,1
-  - type: StorageFill
-    contents:
-      - id: EncryptionKeyRevolution
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: EncryptionKeyRevolution
         amount: 4
   - type: Storage
     grid:
@@ -122,7 +123,8 @@
   parent: BoxLightbulb
   id: BoxColdLightbulb
   components:
-  - type: StorageFill
-    contents:
-      - id: ColdLightBulb
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: ColdLightBulb
         amount: 12
