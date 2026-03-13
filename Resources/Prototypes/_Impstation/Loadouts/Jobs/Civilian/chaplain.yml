@@ -158,12 +158,6 @@
     - HolyTextKojiki
 
 - type: loadout
-  id: ChaplainBookMansus
-  storage:
-    back:
-    - HolyTextMansus
-
-- type: loadout
   id: ChaplainBookGrimoire
   storage:
     back:
