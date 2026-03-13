@@ -90,7 +90,7 @@
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
-  # - BorgModuleAppraisal # imp
+  - BorgModuleAppraisal
 
   radioChannels:
   - Supply
