@@ -43,60 +43,60 @@
   - type: Loadout
     prototypes: [ MobMagicMonkeyGear ]
 
-- type: entity
-  name: wizspore
-  parent: MobSorb
-  id: MobWizSpore
-  description: Fungus but a bit more magical.
-  components:
-  - type: Sprite
-    sprite: _Impstation/Mobs/Animals/Magic/miniwiz.rsi
-    layers:
-    - map: ["enum.DamageStateVisualLayers.Base"]
-      state: miniwiz
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: miniwiz
-      Dead:
-        Base: wizded
-  - type: BallisticAmmoProvider
-    proto: BulletLighterIncendiary
-    capacity: 500
-  - type: Gun
-    clumsyProof: true
-    fireRate: 0.4
-    useKey: false
-    selectedMode: SemiAuto
-    availableModes:
-      - SemiAuto
-    soundGunshot: /Audio/Magic/fireball.ogg
-  - type: CombatMode
-  - type: HTN
-    rootTask:
-      task: WizSporeCompound # KILL KILL KILL
-  - type: Butcherable
-    spawned:
-    - id: FoodMeatSlime
-  - type: NPCRetaliation
-    attackMemoryLength: 10
-  - type: FactionException
-  - type: NpcFactionMember
-    factions:
-    - Wizard
-  - type: NPCImprintingOnSpawnBehaviour
-    spawnFriendsSearchRadius: 4
-    whitelist:
-      components:
-      - HumanoidAppearance
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    - Dead
-    damageCap: 50
-    damage:
-      types:
-        Blunt: 0.11
+#- type: entity
+#  name: wizspore
+#  parent: MobSorb
+#  id: MobWizSpore
+#  description: Fungus but a bit more magical.
+#  components:
+#  - type: Sprite
+#    sprite: _Impstation/Mobs/Animals/Magic/miniwiz.rsi
+#    layers:
+#    - map: ["enum.DamageStateVisualLayers.Base"]
+#      state: miniwiz
+#  - type: DamageStateVisuals
+#    states:
+#      Alive:
+#        Base: miniwiz
+#      Dead:
+#        Base: wizded
+#  - type: BallisticAmmoProvider
+#    proto: BulletLighterIncendiary
+#    capacity: 500
+#  - type: Gun
+#    clumsyProof: true
+#    fireRate: 0.4
+#    useKey: false
+#    selectedMode: SemiAuto
+#    availableModes:
+#      - SemiAuto
+#    soundGunshot: /Audio/Magic/fireball.ogg
+#  - type: CombatMode
+#  - type: HTN
+#    rootTask:
+#      task: WizSporeCompound # KILL KILL KILL
+#  - type: Butcherable
+#    spawned:
+#    - id: FoodMeatSlime
+#  - type: NPCRetaliation
+#    attackMemoryLength: 10
+#  - type: FactionException
+#  - type: NpcFactionMember
+#    factions:
+#    - Wizard
+#  - type: NPCImprintingOnSpawnBehaviour
+#    spawnFriendsSearchRadius: 4
+#    whitelist:
+#      components:
+#      - HumanoidAppearance
+#  - type: PassiveDamage
+#    allowedStates:
+#    - Alive
+#    - Dead
+#    damageCap: 50
+#    damage:
+#      types:
+#        Blunt: 0.11
 
 - type: entity
   name: Grotesque

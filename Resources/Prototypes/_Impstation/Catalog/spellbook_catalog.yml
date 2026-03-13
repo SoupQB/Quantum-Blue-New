@@ -118,18 +118,18 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-- type: listing
-  id: SpellbookSpawnSpores
-  name: spellbook-wizspore-name
-  description: spellbook-wizspore-desc
-  productAction: ActionSpawnWizSpore
-  cost:
-    WizCoin: 3
-  categories:
-  - SpellbookOffensive
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
+#- type: listing
+#  id: SpellbookSpawnSpores
+#  name: spellbook-wizspore-name
+#  description: spellbook-wizspore-desc
+#  productAction: ActionSpawnWizSpore
+#  cost:
+#    WizCoin: 3
+#  categories:
+#  - SpellbookOffensive
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
 
 - type: listing
   id: SpellbookSpawnCarp

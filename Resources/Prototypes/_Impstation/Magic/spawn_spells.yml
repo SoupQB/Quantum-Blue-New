@@ -47,32 +47,32 @@
   - type: SpeakOnAction
     sentence: action-speech-spell-summon-bff
 
-- type: entity
-  parent: BaseAction
-  id: ActionSpawnWizSpore
-  name: Summon Spores
-  description: Go my spores!
-  components:
-  - type: Action
-    useDelay: 180
-    itemIconStyle: BigAction
-    sound: !type:SoundPathSpecifier
-      path: /Audio/_Impstation/Animals/bros_hit.ogg
-    icon:
-      sprite: _Impstation/Mobs/Animals/Magic/miniwiz.rsi
-      state: miniwiz
-  - type: TargetAction
-    range: 5
-  - type: WorldTargetAction
-    event: !type:WorldSpawnSpellEvent
-      prototypes:
-      - id: MobWizSpore
-        amount: 12
-      offset: 0, 1
-  - type: SpeakOnAction
-    sentence: action-speech-spell-summon-wiz
-  - type: Magic
-    requiresClothes: true
+#- type: entity
+#  parent: BaseAction
+#  id: ActionSpawnWizSpore
+#  name: Summon Spores
+#  description: Go my spores!
+#  components:
+#  - type: Action
+#    useDelay: 180
+#    itemIconStyle: BigAction
+#    sound: !type:SoundPathSpecifier
+#      path: /Audio/_Impstation/Animals/bros_hit.ogg
+#    icon:
+#      sprite: _Impstation/Mobs/Animals/Magic/miniwiz.rsi
+#      state: miniwiz
+#  - type: TargetAction
+#    range: 5
+#  - type: WorldTargetAction
+#    event: !type:WorldSpawnSpellEvent
+#      prototypes:
+#      - id: MobWizSpore
+#        amount: 12
+#      offset: 0, 1
+#  - type: SpeakOnAction
+#    sentence: action-speech-spell-summon-wiz
+#  - type: Magic
+#    requiresClothes: true
 
 - type: entity
   parent: BaseAction
