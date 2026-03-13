@@ -428,7 +428,7 @@
 
 - type: entity
   id: RandomHumanoidVisitorServiceWorker
-  name: visiting service attendant ghost role # imp edit
+  name: visiting service worker ghost role
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi

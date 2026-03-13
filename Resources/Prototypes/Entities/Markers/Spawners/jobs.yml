@@ -151,7 +151,7 @@
 - type: entity
   id: SpawnPointServiceWorker
   parent: SpawnPointJobBase
-  name: service attendant # imp edit
+  name: service worker
   components:
   - type: SpawnPoint
     job_id: ServiceWorker

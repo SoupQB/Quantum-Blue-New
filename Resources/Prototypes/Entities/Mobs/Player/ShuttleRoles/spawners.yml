@@ -746,7 +746,7 @@
     - RandomHumanoidVisitorReporter
 
 - type: entity
-  name: visiting service attendant spawner # imp edit
+  name: visiting service worker spawner
   id: VisitorServiceWorkerSpawner
   parent: MarkerBase
   components:

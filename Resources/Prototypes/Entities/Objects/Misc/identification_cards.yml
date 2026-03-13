@@ -544,7 +544,7 @@
 - type: entity
   parent: IDCardStandard
   id: ServiceWorkerIDCard
-  name: service attendant ID card # imp edit
+  name: service worker ID card
   components:
   - type: Sprite
     layers:
