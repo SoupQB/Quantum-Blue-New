@@ -167,6 +167,7 @@ namespace Content.IntegrationTests.Tests
             "CogImp",
             "CoreImp",
             "E1M1",
+            "Eclipse",
             "ElkridgeImp",
             "GateImp",
             "reHash",
@@ -187,11 +188,12 @@ namespace Content.IntegrationTests.Tests
             "Whisper",
             "Monarch",
 
-            // NOT IN ROTATION BUT WE STILL NEED THEM TESTED SINCE THEY STILL HAVE A PROTOTYPE:
-            "Eclipse",
-            "Refsdal",
-            "Skimmer",
-            "Union",
+            // DEROTATED:
+            //"Luna",
+            //"Refsdal",
+            //"reHash",
+            //"RelicImp",
+            //"Skimmer",
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
