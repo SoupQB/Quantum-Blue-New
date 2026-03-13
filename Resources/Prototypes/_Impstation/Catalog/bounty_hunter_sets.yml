@@ -1,13 +1,13 @@
 - type: thiefBackpackSet
-  id: BountyHunterRaider
+  id: BountyHunterRifle
   name: bounty-hunter-category-raider-name
   description: bounty-hunter-category-raider-description
   sprite:
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     state: icon
   content:
-  - WeaponShotgunEnforcer
-  - BoxMagazineShotgun
+  - WeaponRifleAk
+  - BoxMagazineLightRifle
   - C4
   - C4
   - C4
@@ -102,8 +102,8 @@
     state: icon
   content:
   - SyndicateBusinessCard
-  - ClothingOuterVestWebElite
-  - ClothingHeadHelmetSwatSyndicate
+  - ClothingOuterArmorRaid
+  - ClothingHeadHelmetRaid
   - EncryptionKeySyndie
   - EnergySword
   - EmpImplanter
