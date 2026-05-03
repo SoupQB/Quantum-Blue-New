@@ -199,6 +199,9 @@ namespace Content.IntegrationTests.Tests
             // from deltav:
             "Asterisk",
             "Chibi",
+
+            // QB prototypes:
+            "Dash"
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
