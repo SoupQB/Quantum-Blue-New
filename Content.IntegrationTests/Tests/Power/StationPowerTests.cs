@@ -76,8 +76,9 @@ public sealed class StationPowerTests
         //"Skimmer",
 
         // QB PROTOTYPES:
-        "Asterisk",
-        "Chibi",
+        "AsteriskQB",
+        "ByoinQB",
+        "ChibiQB",
         "Dash",
         "ElkridgeQB",
         "Foundry",

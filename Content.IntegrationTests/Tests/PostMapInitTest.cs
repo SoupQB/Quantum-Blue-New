@@ -186,8 +186,9 @@ namespace Content.IntegrationTests.Tests
             // "Monarch",
 
             // QB PROTOTYPES:
-            "Asterisk",
-            "Chibi",
+            "AsteriskQB",
+            "ByoinQB",
+            "ChibiQB",
             "Dash",
             "ElkridgeQB",
             "Foundry",
