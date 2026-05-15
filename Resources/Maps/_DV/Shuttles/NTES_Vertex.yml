@@ -7149,13 +7149,6 @@ entities:
     - type: Transform
       pos: -7.5,22.5
       parent: 1
-- proto: WarpPointEvacShuttle
-  entities:
-  - uid: 1100
-    components:
-    - type: Transform
-      pos: -3.5,8.5
-      parent: 1
 - proto: WeaponCapacitorRecharger
   entities:
   - uid: 751
