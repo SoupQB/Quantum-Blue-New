@@ -23,7 +23,6 @@
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-hop-captain #imp
   canBeAntag: false
-  whitelisted: true
   access:
   - HeadOfSecurity
   - Command

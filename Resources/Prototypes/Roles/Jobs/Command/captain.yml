@@ -28,7 +28,6 @@
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  whitelisted: true
   accessGroups:
   - AllAccess
   special:
