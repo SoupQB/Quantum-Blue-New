@@ -2791,8 +2791,7 @@ entities:
       pos: 31.5,-16.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
     - type: DeviceLinkSink
       invokeCounter: 1
     - type: DeviceLinkSource
@@ -2809,8 +2808,7 @@ entities:
       pos: 29.5,-15.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
     - type: DeviceLinkSink
       invokeCounter: 1
     - type: DeviceLinkSource
@@ -3984,6 +3982,34 @@ entities:
     components:
     - type: Transform
       pos: 0.66429377,9.789996
+      parent: 2
+- proto: SpawnPointBartender
+  entities:
+  - uid: 900001
+    components:
+    - type: Transform
+      pos: 1.5,9.5
+      parent: 2
+- proto: SpawnPointBotanist
+  entities:
+  - uid: 900002
+    components:
+    - type: Transform
+      pos: -4.5,8.5
+      parent: 2
+- proto: SpawnPointChef
+  entities:
+  - uid: 900003
+    components:
+    - type: Transform
+      pos: -1.5,-0.5
+      parent: 2
+- proto: SpawnPointMusician
+  entities:
+  - uid: 900004
+    components:
+    - type: Transform
+      pos: 2.5,5.5
       parent: 2
 - proto: BookEngineersHandbook
   entities:
@@ -12474,83 +12500,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,10.5
       parent: 2
-- proto: DisposalUnit
-  entities:
-  - uid: 21
-    components:
-    - type: Transform
-      pos: 22.5,-15.5
-      parent: 2
-  - uid: 239
-    components:
-    - type: Transform
-      pos: 12.5,5.5
-      parent: 2
-  - uid: 765
-    components:
-    - type: Transform
-      pos: 9.5,-15.5
-      parent: 2
-  - uid: 1108
-    components:
-    - type: Transform
-      pos: -3.5,3.5
-      parent: 2
-  - uid: 1179
-    components:
-    - type: Transform
-      pos: 3.5,17.5
-      parent: 2
-  - uid: 1296
-    components:
-    - type: Transform
-      pos: 24.5,11.5
-      parent: 2
-  - uid: 1297
-    components:
-    - type: Transform
-      pos: 14.5,13.5
-      parent: 2
-  - uid: 1617
-    components:
-    - type: Transform
-      pos: 20.5,5.5
-      parent: 2
-  - uid: 1670
-    components:
-    - type: Transform
-      pos: 26.5,-9.5
-      parent: 2
-  - uid: 1760
-    components:
-    - type: Transform
-      pos: 6.5,-15.5
-      parent: 2
-    - type: UserInterface
-      actors:
-        enum.DisposalUnitUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
-  - uid: 2243
-    components:
-    - type: Transform
-      pos: 1.5,-11.5
-      parent: 2
-  - uid: 2530
-    components:
-    - type: Transform
-      pos: 5.5,10.5
-      parent: 2
-  - uid: 3378
-    components:
-    - type: Transform
-      pos: 12.5,-8.5
-      parent: 2
-  - uid: 3893
-    components:
-    - type: Transform
-      pos: 20.5,-17.5
-      parent: 2
 - proto: DisposalYJunction
   entities:
   - uid: 362
@@ -12987,8 +12936,7 @@ entities:
       pos: 25.5,-10.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 2702
       - 4222
@@ -13527,8 +13475,7 @@ entities:
       pos: 3.5,-14.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 4207
   - uid: 2726
@@ -13698,8 +13645,7 @@ entities:
       pos: 4.5,14.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 2723
       - 2895
@@ -13709,8 +13655,7 @@ entities:
       pos: 4.5,16.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 2723
       - 2895
@@ -13776,8 +13721,7 @@ entities:
       pos: 3.5,-10.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 4207
   - uid: 4482
@@ -19112,8 +19056,7 @@ entities:
       pos: 6.5,-8.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 4207
     - type: AtmosPipeColor
@@ -19612,8 +19555,7 @@ entities:
       pos: 5.5,-13.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 4207
     - type: AtmosPipeColor
@@ -19624,8 +19566,7 @@ entities:
       pos: 5.5,-7.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
+      configurators: []
       deviceLists:
       - 4207
     - type: AtmosPipeColor
