@@ -122,7 +122,11 @@ namespace Content.IntegrationTests.Tests
             ("Loop", "Psychologist"),
             ("Lilboat", "Paramedic"),
             ("RelicImp", "SalvageSpecialist"),
-            ("RelicImp", "Clown")
+            ("RelicImp", "Clown"),
+            ("ChibiQB", "Bartender"),
+            ("ChibiQB", "Botanist"),
+            ("ChibiQB", "Chef"),
+            ("ChibiQB", "Musician")
         };
 
         /// <summary>
