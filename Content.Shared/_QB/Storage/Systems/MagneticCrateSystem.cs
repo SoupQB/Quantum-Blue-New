@@ -2,12 +2,14 @@ using Content.Shared.QB.Storage.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.QB.Storage.Systems;
 
 public sealed class MagneticCrateSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
@@ -17,8 +19,14 @@ public sealed class MagneticCrateSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<MagneticCrateComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<MagneticCrateComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerb);
         SubscribeLocalEvent<MagneticCrateComponent, IsWeightlessEvent>(OnIsWeightless);
+    }
+
+    private void OnStartup(Entity<MagneticCrateComponent> ent, ref ComponentStartup args)
+    {
+        UpdateAppearance(ent);
     }
 
     /// <summary>
@@ -33,14 +41,25 @@ public sealed class MagneticCrateSystem : EntitySystem
 
         component.MagnetEnabled = !component.MagnetEnabled;
         Dirty(uid, component);
+        UpdateAppearance((uid, component));
         _gravity.RefreshWeightless(uid);
 
         _popup.PopupPredicted(Loc.GetString(component.MagnetEnabled
             ? "magnetic-crate-toggle-on-popup"
             : "magnetic-crate-toggle-off-popup"), user, user);
     }
-    
-    /// <summary> Adds an alternative verb to toggle the magnet on or off triggered by right-click menu or altclicking the crate.
+
+    /// <summary>
+    /// Updates the appearance of the magnetic crate based on whether the magnet is enabled.
+    /// </summary>
+    /// <param name="ent">The entity representing the magnetic crate.</param>
+    private void UpdateAppearance(Entity<MagneticCrateComponent> ent)
+    {
+        _appearance.SetData(ent, MagneticCrateVisuals.MagnetState, ent.Comp.MagnetEnabled);
+    }
+
+    /// <summary>
+    /// Adds an alternative verb to toggle the magnet on or off triggered by right-click menu or altclicking the crate.
     /// <param name="uid"> The entity representing the magnetic crate.</param>
     /// <param name="component"> The magnetic crate component.</param>
     /// <param name="verbArgs"> The event arguments for getting alternative verbs, which includes the user and the list of verbs to add to.</param>
@@ -82,4 +101,16 @@ public sealed class MagneticCrateSystem : EntitySystem
             weightlessEvent.Handled = true;
         }
     }
+}
+
+// These are needed for the visualizer, which changes the crate's appearance based on whether the magnet is enabled.
+[Serializable, NetSerializable]
+public enum MagneticCrateVisuals : byte
+{
+    MagnetState,
+}
+
+public enum MagneticCrateVisualLayers
+{
+    MagnetLight,
 }

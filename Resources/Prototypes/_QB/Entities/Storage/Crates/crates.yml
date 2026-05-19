@@ -12,9 +12,34 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: off
+      map: ["enum.MagneticCrateVisualLayers.MagnetLight"]
+      shader: unshaded
     - state: open
       map: [ open_crate ]
-      offset: 0, 0 # No offset, overlays perfectly
+      visible: false
+      offset: 0, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PaperLabelVisuals.HasLabel:
+        enum.PaperLabelVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PaperLabelVisuals.LabelType:
+        enum.PaperLabelVisuals.Layer:
+          Paper: { state: paper }
+          Bounty: { state: bounty }
+          CaptainsPaper: { state: captains_paper }
+          Invoice: { state: invoice }
+      enum.StorageVisuals.Open:
+        open_crate:
+          True: { visible: true }
+          False: { visible: false }
+      enum.MagneticCrateVisuals.MagnetState:
+        enum.MagneticCrateVisualLayers.MagnetLight:
+          True: { state: on }
+          False: { state: off }
   - type: MagneticCrate
   - type: Damageable
     damageContainer: StructuralInorganic
