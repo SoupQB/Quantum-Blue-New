@@ -3584,6 +3584,34 @@ entities:
     - type: Transform
       pos: 0.66429377,9.789996
       parent: 2
+- proto: SpawnPointBartender
+  entities:
+  - uid: 900001
+    components:
+    - type: Transform
+      pos: 1.5,9.5
+      parent: 2
+- proto: SpawnPointBotanist
+  entities:
+  - uid: 900002
+    components:
+    - type: Transform
+      pos: -4.5,8.5
+      parent: 2
+- proto: SpawnPointChef
+  entities:
+  - uid: 900003
+    components:
+    - type: Transform
+      pos: -1.5,-0.5
+      parent: 2
+- proto: SpawnPointMusician
+  entities:
+  - uid: 900004
+    components:
+    - type: Transform
+      pos: 2.5,5.5
+      parent: 2
 - proto: BookEngineersHandbook
   entities:
   - uid: 4080
