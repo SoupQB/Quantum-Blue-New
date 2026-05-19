@@ -4,7 +4,7 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 05/07/2026 09:47:37
+  time: 05/19/2026 02:47:52
   entityCount: 4496
 maps:
 - 1
@@ -504,10 +504,6 @@ entities:
           decals:
             733: 5,16
             734: 5,14
-        - node:
-            color: '#9FED58CD'
-            id: BrickTileWhiteInnerNw
-          decals:
             896: 3,5
             908: 0,1
         - node:
@@ -658,10 +654,6 @@ entities:
           decals:
             735: 5,16
             736: 5,14
-        - node:
-            color: '#9FED58CD'
-            id: BrickTileWhiteInnerSw
-          decals:
             884: 9,3
             906: -3,3
             907: 0,3
@@ -1028,10 +1020,6 @@ entities:
             730: 5,12
             731: 5,11
             732: 5,10
-        - node:
-            color: '#9FED58CD'
-            id: BrickTileWhiteLineW
-          decals:
             910: -1,0
             911: -1,-1
             912: -1,-2
@@ -2783,42 +2771,6 @@ entities:
         - - DoorStatus
           - DoorBolt
         2775:
-        - - DoorStatus
-          - DoorBolt
-  - uid: 2743
-    components:
-    - type: Transform
-      pos: 31.5,-16.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-    - type: DeviceLinkSink
-      invokeCounter: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        2744:
-        - - DoorStatus
-          - DoorBolt
-        2775:
-        - - DoorStatus
-          - DoorBolt
-  - uid: 2744
-    components:
-    - type: Transform
-      pos: 29.5,-15.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-    - type: DeviceLinkSink
-      invokeCounter: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        2742:
-        - - DoorStatus
-          - DoorBolt
-        2743:
         - - DoorStatus
           - DoorBolt
   - uid: 2775
@@ -12521,16 +12473,6 @@ entities:
     - type: Transform
       pos: 26.5,-9.5
       parent: 2
-  - uid: 1760
-    components:
-    - type: Transform
-      pos: 6.5,-15.5
-      parent: 2
-    - type: UserInterface
-      actors:
-        enum.DisposalUnitUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
   - uid: 2243
     components:
     - type: Transform
@@ -12980,18 +12922,6 @@ entities:
       deviceLists:
       - 2583
       - 2591
-  - uid: 1571
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 25.5,-10.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 2702
-      - 4222
   - uid: 2266
     components:
     - type: Transform
@@ -13520,17 +13450,6 @@ entities:
       deviceLists:
       - 2707
       - 2692
-  - uid: 2717
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,-14.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 4207
   - uid: 2726
     components:
     - type: Transform
@@ -13692,28 +13611,6 @@ entities:
       deviceLists:
       - 2659
       - 2658
-  - uid: 2653
-    components:
-    - type: Transform
-      pos: 4.5,14.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 2723
-      - 2895
-  - uid: 2654
-    components:
-    - type: Transform
-      pos: 4.5,16.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 2723
-      - 2895
   - uid: 2671
     components:
     - type: Transform
@@ -13770,16 +13667,6 @@ entities:
       deviceLists:
       - 2692
       - 4222
-  - uid: 2860
-    components:
-    - type: Transform
-      pos: 3.5,-10.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 4207
   - uid: 4482
     components:
     - type: Transform
@@ -19106,18 +18993,6 @@ entities:
       - 2707
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 1945
-    components:
-    - type: Transform
-      pos: 6.5,-8.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 4207
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 1982
     components:
     - type: Transform
@@ -19603,31 +19478,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 4484
-    - type: AtmosPipeColor
-      color: '#FFAA00FF'
-  - uid: 2246
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 5.5,-13.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 4207
-    - type: AtmosPipeColor
-      color: '#FFAA00FF'
-  - uid: 2247
-    components:
-    - type: Transform
-      pos: 5.5,-7.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 4207
     - type: AtmosPipeColor
       color: '#FFAA00FF'
   - uid: 2267
