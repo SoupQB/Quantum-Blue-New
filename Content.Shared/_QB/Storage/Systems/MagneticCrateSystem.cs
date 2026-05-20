@@ -2,6 +2,8 @@ using Content.Shared.QB.Storage.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -10,10 +12,12 @@ namespace Content.Shared.QB.Storage.Systems;
 public sealed class MagneticCrateSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private static readonly string ToggleIcon = "/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png";
+    private static readonly SoundSpecifier ToggleSound = new SoundCollectionSpecifier("sparks");
 
     public override void Initialize()
     {
@@ -43,6 +47,7 @@ public sealed class MagneticCrateSystem : EntitySystem
         Dirty(uid, component);
         UpdateAppearance((uid, component));
         _gravity.RefreshWeightless(uid);
+        _audio.PlayPredicted(ToggleSound, uid, user, AudioParams.Default.WithVolume(-5f));
 
         _popup.PopupPredicted(Loc.GetString(component.MagnetEnabled
             ? "magnetic-crate-toggle-on-popup"
