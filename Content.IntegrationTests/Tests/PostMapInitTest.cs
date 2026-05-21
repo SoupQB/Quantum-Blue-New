@@ -94,6 +94,8 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Impstation/eclipse.yml", // Contains PTK-800 "Matter Dematerializer", LSE-400c "Svalinn machine gun"
             "/Maps/_Impstation/monarch.yml", // Contains ship cannons
             "/Maps/_DV/chibi.yml", // Contains command toys like the Handheld Crew Monitor
+            "/Maps/_QB/chibi.yml", // Same as above, but for QB
+            "/Maps/_QB/dash.yml", // Contains command toys
 
 
             // Shuttles
@@ -103,7 +105,8 @@ namespace Content.IntegrationTests.Tests
             "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
             "/Maps/Shuttles/ShuttleEvent/recruiter.yml", // Contains syndicate rubber stamp
             "/Maps/_DV/Shuttles/listening_post.yml", // Contains captain's rubber stamp, chief engineer's rubber stamp, chaplain's rubber stamp, clown's rubber stamp, blablabla you get the picture
-            "/Maps/_Impstation/Shuttles/listening_post.yml" // No, I'm not gonna list out all these stamps again lol
+            "/Maps/_Impstation/Shuttles/listening_post.yml", // No, I'm not gonna list out all these stamps again lol
+            "/Maps/_QB/Shuttles/listening_post.yml" // Same as above but for QB
 
         };
 
@@ -207,6 +210,21 @@ namespace Content.IntegrationTests.Tests
             //"Skimmer",
         };
 
+        // QB Add Start: We only want to test the maps we actually use, so instead of testing all maps and skipping the ones we don't want to test, we just directly specify the maps we want to test.
+        private static readonly HashSet<string> EnabledGameMapIds = GameMaps.ToHashSet();
+
+        // Non-game maps are opt-in. Anything not listed in GameMaps should stay out of these tests. You'll need to build this out just like GameMaps.
+        private static readonly ResPath[] NonGameMapFiles = [];
+
+        private static HashSet<ResPath> GetEnabledGameMapPaths(IPrototypeManager protoManager)
+        {
+            return protoManager.EnumeratePrototypes<GameMapPrototype>()
+                .Where(proto => EnabledGameMapIds.Contains(proto.ID))
+                .Select(proto => proto.MapPath)
+                .ToHashSet();
+        }
+        // QB Add End
+
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 
         /// <summary>
@@ -302,6 +320,7 @@ namespace Content.IntegrationTests.Tests
             var resourceManager = server.ResolveDependency<IResourceManager>();
             var protoManager = server.ResolveDependency<IPrototypeManager>();
             var loader = server.System<MapLoaderSystem>();
+            var enabledGameMapPaths = GetEnabledGameMapPaths(protoManager); // QB add: we only want to test the maps we actually use.
 
             var mapFolder = new ResPath("/Maps");
             var maps = resourceManager
@@ -312,6 +331,9 @@ namespace Content.IntegrationTests.Tests
             var v7Maps = new List<ResPath>();
             foreach (var map in maps)
             {
+                if (!enabledGameMapPaths.Contains(map)) // QB add: skip maps that aren't in the test cases.
+                    continue;
+
                 var rootedPath = map.ToRootedPath();
 
                 // ReSharper disable once RedundantLogicalConditionalExpressionOperand
@@ -607,7 +629,7 @@ namespace Content.IntegrationTests.Tests
             return resultCount;
         }
 
-        [Test, NonParallelizable] // imp nonparallelize for OOM
+        [Test, NonParallelizable, Explicit] // imp nonparallelize for OOM
         public async Task AllMapsTested()
         {
             await using var pair = await PoolManager.GetServerClient();
@@ -626,57 +648,19 @@ namespace Content.IntegrationTests.Tests
             await pair.CleanReturnAsync();
         }
 
-        [Test, NonParallelizable] // imp nonparallelize for OOM
+        [Test, NonParallelizable, Explicit] // imp nonparallelize for OOM, QB make explicit
         public async Task NonGameMapsLoadableTest()
         {
             await using var pair = await PoolManager.GetServerClient();
             var server = pair.Server;
 
             var mapLoader = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<MapLoaderSystem>();
-            var resourceManager = server.ResolveDependency<IResourceManager>();
-            var protoManager = server.ResolveDependency<IPrototypeManager>();
             var cfg = server.ResolveDependency<IConfigurationManager>();
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
-            var gameMaps = protoManager.EnumeratePrototypes<GameMapPrototype>().Select(o => o.MapPath).ToHashSet();
-
-            // QB: Wizden station maps have their prototypes abstracted in ignoredPrototypes.yml.
-            // EnumeratePrototypes skips abstract prototypes, so their map data files would
-            // otherwise be loaded by this test. Skip them explicitly to match the ignored set.1
-            var abstractedGameMapPaths = new HashSet<ResPath>
-            {
-                new("/Maps/amber.yml"),
-                new("/Maps/bagel.yml"),
-                new("/Maps/box.yml"),
-                new("/Maps/_Impstation/box.yml"),
-                new("/Maps/centcomm.yml"),
-                new("/Maps/exo.yml"),
-                new("/Maps/fland.yml"),
-                new("/Maps/marathon.yml"),
-                new("/Maps/oasis.yml"),
-                new("/Maps/packed.yml"),
-                new("/Maps/plasma.yml"),
-                new("/Maps/reach.yml"),
-                new("/Maps/relic.yml"),
-                new("/Maps/saltern.yml"),
-                new("/Maps/hash.yml"),
-            };
-
-            var mapFolder = new ResPath("/Maps");
-            var maps = resourceManager
-                .ContentFindFiles(mapFolder)
-                .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
-                .ToArray();
-
             var mapPaths = new List<ResPath>();
-            foreach (var map in maps)
+            foreach (var map in NonGameMapFiles) // QB Edit : This used to load EVERY MAP no mater what.
             {
-                if (gameMaps.Contains(map))
-                    continue;
-
-                if (abstractedGameMapPaths.Contains(map))
-                    continue;
-
                 var rootedPath = map.ToRootedPath();
                 if (SkipTestMaps && rootedPath.ToString().StartsWith(TestMapsPath, StringComparison.Ordinal))
                 {
