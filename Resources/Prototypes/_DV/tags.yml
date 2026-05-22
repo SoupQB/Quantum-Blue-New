@@ -2,3 +2,9 @@
 
 - type: Tag
   id: DockShipyard
+
+- type: Tag
+  id: Katana
+
+- type: Tag
+  id: Wakizashi
