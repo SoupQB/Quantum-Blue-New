@@ -26,6 +26,18 @@ public sealed partial class MeteorSwarmComponent : Component
     [DataField]
     public float MeteorVelocity = 10f;
 
+    [DataField]
+    public float StrikeOffsetRadius = 200f; //QB Edit
+
+    [DataField]
+    public float InteriorSpawnChance = 1f / 500f; //QB Edit
+
+    [DataField]
+    public float InteriorSpawnRadius = 200f; //QB Edit
+
+    [DataField]
+    public float SpawnPadding = 50f; //QB Edit
+
     /// <summary>
     /// If true, meteors will be thrown from all angles instead of from a singular source
     /// </summary>
