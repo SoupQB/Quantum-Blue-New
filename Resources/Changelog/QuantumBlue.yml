@@ -1,4 +1,11 @@
 Entries:
+  - author: msTheowo
+    changes:
+      - type: Add
+        message: Added interaction verbs.
+    id: 112
+    time: '2026-05-26T07:10:35.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/124
   - author: MattFright
     changes:
       - type: Tweak
