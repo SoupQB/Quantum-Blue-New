@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 05/22/2026 23:27:18
-  entityCount: 7362
+  time: 05/25/2026 21:35:54
+  entityCount: 7366
 maps: []
 grids:
 - 1668
@@ -3157,11 +3157,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 23.5,-27.5
       parent: 1668
-- proto: AirlockBarGlass
+- proto: AirlockBarGlassLocked
   entities:
-  - uid: 2780
+  - uid: 2673
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
       pos: 30.5,18.5
       parent: 1668
 - proto: AirlockBarLocked
@@ -8925,11 +8926,6 @@ entities:
     components:
     - type: Transform
       pos: 31.5,-0.5
-      parent: 1668
-  - uid: 2673
-    components:
-    - type: Transform
-      pos: 35.5,19.5
       parent: 1668
   - uid: 2679
     components:
@@ -15570,11 +15566,6 @@ entities:
     - type: Transform
       pos: 19.5,17.5
       parent: 1668
-  - uid: 3000
-    components:
-    - type: Transform
-      pos: 35.5,19.5
-      parent: 1668
   - uid: 3001
     components:
     - type: Transform
@@ -17741,6 +17732,18 @@ entities:
       parent: 1668
 - proto: CarpetBlack
   entities:
+  - uid: 2780
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 33.5,16.5
+      parent: 1668
+  - uid: 3000
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 33.5,15.5
+      parent: 1668
   - uid: 3162
     components:
     - type: Transform
@@ -17854,6 +17857,30 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 27.5,12.5
+      parent: 1668
+  - uid: 6573
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 33.5,17.5
+      parent: 1668
+  - uid: 7363
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,17.5
+      parent: 1668
+  - uid: 7364
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,16.5
+      parent: 1668
+  - uid: 7365
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,15.5
       parent: 1668
 - proto: CarpetGreen
   entities:
@@ -20406,178 +20433,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 24.5,15.5
       parent: 1668
-- proto: DefaultStationBeacon
-  entities:
-  - uid: 7117
-    components:
-    - type: Transform
-      pos: -0.5,-42.5
-      parent: 1668
-  - uid: 7118
-    components:
-    - type: Transform
-      pos: -20.5,-25.5
-      parent: 1668
-- proto: DefaultStationBeaconArmory
-  entities:
-  - uid: 7127
-    components:
-    - type: Transform
-      pos: 9.5,29.5
-      parent: 1668
-- proto: DefaultStationBeaconArrivals
-  entities:
-  - uid: 7104
-    components:
-    - type: Transform
-      pos: 26.5,-0.5
-      parent: 1668
-- proto: DefaultStationBeaconAtmospherics
-  entities:
-  - uid: 7112
-    components:
-    - type: Transform
-      pos: 22.5,-30.5
-      parent: 1668
-- proto: DefaultStationBeaconBar
-  entities:
-  - uid: 7113
-    components:
-    - type: Transform
-      pos: 9.5,-25.5
-      parent: 1668
-- proto: DefaultStationBeaconBrig
-  entities:
-  - uid: 7129
-    components:
-    - type: Transform
-      pos: 11.5,24.5
-      parent: 1668
-- proto: DefaultStationBeaconCargoBay
-  entities:
-  - uid: 7126
-    components:
-    - type: Transform
-      pos: -9.5,25.5
-      parent: 1668
-- proto: DefaultStationBeaconCargoReception
-  entities:
-  - uid: 7120
-    components:
-    - type: Transform
-      pos: -7.5,10.5
-      parent: 1668
-- proto: DefaultStationBeaconChemistry
-  entities:
-  - uid: 7108
-    components:
-    - type: Transform
-      pos: 5.5,-11.5
-      parent: 1668
-- proto: DefaultStationBeaconCommand
-  entities:
-  - uid: 7103
-    components:
-    - type: Transform
-      pos: -0.5,-0.5
-      parent: 1668
-  - uid: 7121
-    components:
-    - type: Transform
-      pos: -21.5,4.5
-      parent: 1668
-  - uid: 7122
-    components:
-    - type: Transform
-      pos: -15.5,10.5
-      parent: 1668
-- proto: DefaultStationBeaconCryosleep
-  entities:
-  - uid: 7116
-    components:
-    - type: Transform
-      pos: -4.5,-16.5
-      parent: 1668
-- proto: DefaultStationBeaconDisposals
-  entities:
-  - uid: 7115
-    components:
-    - type: Transform
-      pos: -17.5,-32.5
-      parent: 1668
-- proto: DefaultStationBeaconEngineering
-  entities:
-  - uid: 7111
-    components:
-    - type: Transform
-      pos: 25.5,-22.5
-      parent: 1668
-- proto: DefaultStationBeaconGravGen
-  entities:
-  - uid: 7110
-    components:
-    - type: Transform
-      pos: 32.5,-13.5
-      parent: 1668
-- proto: DefaultStationBeaconHOPOffice
-  entities:
-  - uid: 7125
-    components:
-    - type: Transform
-      pos: -25.5,-6.5
-      parent: 1668
-- proto: DefaultStationBeaconKitchen
-  entities:
-  - uid: 7114
-    components:
-    - type: Transform
-      pos: -9.5,-25.5
-      parent: 1668
-- proto: DefaultStationBeaconMedbay
-  entities:
-  - uid: 7106
-    components:
-    - type: Transform
-      pos: 12.5,-6.5
-      parent: 1668
-- proto: DefaultStationBeaconSecurityCheckpoint
-  entities:
-  - uid: 7105
-    components:
-    - type: Transform
-      pos: 12.5,4.5
-      parent: 1668
-  - uid: 7119
-    components:
-    - type: Transform
-      pos: -5.5,-11.5
-      parent: 1668
-- proto: DefaultStationBeaconTelecoms
-  entities:
-  - uid: 7134
-    components:
-    - type: Transform
-      pos: 4.5,-16.5
-      parent: 1668
-- proto: DefaultStationBeaconVault
-  entities:
-  - uid: 7123
-    components:
-    - type: Transform
-      pos: -11.5,5.5
-      parent: 1668
-  - uid: 7124
-    components:
-    - type: Transform
-      pos: -14.5,-6.5
-      parent: 1668
-- proto: DefaultStationBeaconWardensOffice
-  entities:
-  - uid: 7128
-    components:
-    - type: Transform
-      pos: 6.5,18.5
-      parent: 1668
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 177
@@ -22757,14 +22612,6 @@ entities:
     components:
     - type: Transform
       pos: -20.5,15.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 6573
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 32.5,16.5
       parent: 1668
     - type: Fixtures
       fixtures: {}
@@ -35440,6 +35287,16 @@ entities:
       parent: 1668
     - type: Fixtures
       fixtures: {}
+- proto: SignMaterialsService
+  entities:
+  - uid: 7366
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 18.5,19.5
+      parent: 1668
+    - type: Fixtures
+      fixtures: {}
 - proto: SignMedical
   entities:
   - uid: 736
@@ -35811,107 +35668,6 @@ entities:
     - type: Transform
       pos: 20.335756,8.532319
       parent: 1668
-- proto: StationMap
-  entities:
-  - uid: 2823
-    components:
-    - type: Transform
-      pos: 3.5,5.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 3149
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,-6.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 3226
-    components:
-    - type: Transform
-      pos: -4.5,5.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 3228
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,-6.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7285
-    components:
-    - type: Transform
-      pos: -25.5,1.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7286
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 12.5,9.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7287
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.5,14.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7288
-    components:
-    - type: Transform
-      pos: 10.5,2.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7289
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 28.5,1.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7290
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 28.5,-2.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7291
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 11.5,-26.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7292
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -12.5,-27.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
-  - uid: 7293
-    components:
-    - type: Transform
-      pos: 1.5,-34.5
-      parent: 1668
-    - type: Fixtures
-      fixtures: {}
 - proto: StatueVenusBlue
   entities:
   - uid: 4180

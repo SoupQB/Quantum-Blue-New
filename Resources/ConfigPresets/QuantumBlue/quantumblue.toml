@@ -37,6 +37,7 @@ uptime_restart_minutes = 1440 # 24h
 [ic]
 flavor_text = true
 punctuation = true
+restricted_names = false
 
 [atmos]
 space_wind = true
