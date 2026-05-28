@@ -7,6 +7,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared._EE.InteractionVerbs.Events;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
@@ -384,8 +385,8 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
 
             (string, object)[] localeArgs =
             [
-                ("user", user),
-                ("target", target),
+                ("user", Identity.Entity(user, EntityManager)),
+                ("target", Identity.Entity(target, EntityManager)),
                 ("used", used ?? EntityUid.Invalid),
                 ("selfTarget", user == target),
                 ("hasUsed", used != null)
