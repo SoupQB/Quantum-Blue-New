@@ -1,4 +1,11 @@
 Entries:
+  - author: DVD Player
+    changes:
+      - type: Fix
+        message: Our little slimy algae monsters are now the correct size and weight
+    id: 119
+    time: '2026-05-28T22:32:01.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/127
   - author: Moodotsuki
     changes:
       - type: Tweak
