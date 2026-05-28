@@ -1,4 +1,17 @@
 Entries:
+  - author: MattFright
+    changes:
+      - type: Add
+        message: Added all missing nukie songs to the jukebox! But...
+      - type: Add
+        message: Added some new jukebox songs!
+      - type: Tweak
+        message: Normalized the audio on all jukebox songs.
+      - type: Tweak
+        message: A new dawn is now only accessible by emagging the jukebox.
+    id: 117
+    time: '2026-05-28T05:27:32.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/132
   - author: soup4food
     changes:
       - type: Tweak
