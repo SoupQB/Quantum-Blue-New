@@ -1,4 +1,13 @@
 Entries:
+  - author: Moodotsuki
+    changes:
+      - type: Tweak
+        message: Byoin Station now features a larger AME.
+      - type: Fix
+        message: Byoin Station's security department now actually has hardsuits for its officers.
+    id: 118
+    time: '2026-05-28T05:39:43.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/131
   - author: MattFright
     changes:
       - type: Add
