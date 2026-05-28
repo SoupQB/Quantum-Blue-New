@@ -1,4 +1,11 @@
 Entries:
+  - author: msTheowo
+    changes:
+      - type: Fix
+        message: Using an interaction verb on someone no longer tells you their true identity.
+    id: 115
+    time: '2026-05-28T05:22:33.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/128
   - author: MattFright
     changes:
       - type: Tweak
