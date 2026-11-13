@@ -7,7 +7,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Content.Shared.StepTrigger.Components; // imp edit
-using Content.Shared.StepTrigger.Systems; // imp edit
+//using Content.Shared.StepTrigger.Systems; QB comment out
 using Robust.Shared.Map.Components; // imp edit
 
 namespace Content.Shared.Movement.Systems;
@@ -32,9 +32,8 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         SubscribeLocalEvent<SpeedModifierContactsComponent, EndCollideEvent>(OnEntityExit);
         SubscribeLocalEvent<SpeedModifiedByContactComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
         SubscribeLocalEvent<SpeedModifierContactsComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<SpeedModifierContactsComponent, StepTriggeredOffEvent>(OnStepTriggered); // imp edit
-        SubscribeLocalEvent<SpeedModifierContactsComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt); // imp edit
-
+//      SubscribeLocalEvent<SpeedModifierContactsComponent, StepTriggeredOffEvent>(OnStepTriggered); QB edit
+//      SubscribeLocalEvent<SpeedModifierContactsComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt); QB edit
         UpdatesAfter.Add(typeof(SharedPhysicsSystem));
     }
 
@@ -67,6 +66,13 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
+        // qb edit - skip redundant updates. Callers can set the same value repeatedly which causes stuttering
+        if (MathHelper.CloseTo(component.WalkSpeedModifier, walkSpeed) &&
+            MathHelper.CloseTo(component.SprintSpeedModifier, sprintSpeed))
+        {
+            return;
+        }
+
         component.WalkSpeedModifier = walkSpeed;
         component.SprintSpeedModifier = sprintSpeed;
         Dirty(uid, component);
@@ -97,10 +103,12 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         var entries = 0;
         foreach (var ent in _physics.GetContactingEntities(uid, physicsComponent))
         {
-            // imp edit - StepTrigger and TryBlacklist checks
-            if (TryComp<StepTriggerComponent>(ent, out var stepTriggerComponent) &&
-                !TryBlacklist((ent, stepTriggerComponent)))
+            // QB edit - StepTrigger and TryBlacklist checks
+            if (TryComp<StepTriggerComponent>(ent, out var stepTriggerComponent) && !TryBlacklist((ent, stepTriggerComponent)))
+            {
+                remove = false;
                 continue;
+            } // QB edit end
 
             bool speedModified = false;
 
@@ -166,10 +174,9 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
 
     private void OnEntityEnter(EntityUid uid, SpeedModifierContactsComponent component, ref StartCollideEvent args)
     {
-        // imp edit - added StepTrigger check
-        if (HasComp<StepTriggerComponent>(uid))
-            return;
-
+        // qb edit - the StepTrigger early return that used to live here is gone
+        //if (HasComp<StepTriggerComponent>(uid))
+        //  return;
         AddModifiedEntity(args.OtherEntity);
     }
 
@@ -184,18 +191,6 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
 
         EnsureComp<SpeedModifiedByContactComponent>(uid);
         _toUpdate.Add(uid);
-    }
-
-    // imp edit
-    private void OnStepTriggered(Entity<SpeedModifierContactsComponent> ent, ref StepTriggeredOffEvent args)
-    {
-        AddModifiedEntity(args.Tripper);
-    }
-
-    // imp edit
-    private static void OnStepTriggerAttempt(Entity<SpeedModifierContactsComponent> ent, ref StepTriggerAttemptEvent args)
-    {
-        args.Continue = true;
     }
 
     // imp edit - copied from StepTriggerSystem, but converting that into a separate method is its own headache
