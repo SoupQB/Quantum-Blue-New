@@ -192,6 +192,16 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         EnsureComp<SpeedModifiedByContactComponent>(uid);
         _toUpdate.Add(uid);
     }
+    // private void OnStepTriggered(Entity<SpeedModifierContactsComponent> ent, ref StepTriggeredOffEvent args) QB remove, unused
+    // {
+    //     AddModifiedEntity(args.Tripper);
+    // }
+
+    // // imp edit
+    // private static void OnStepTriggerAttempt(Entity<SpeedModifierContactsComponent> ent, ref StepTriggerAttemptEvent args)
+    // {
+    //     args.Continue = true;
+    // } QB remove end
 
     // imp edit - copied from StepTriggerSystem, but converting that into a separate method is its own headache
     private bool TryBlacklist(Entity<StepTriggerComponent> ent)
