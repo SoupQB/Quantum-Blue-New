@@ -1,4 +1,11 @@
 Entries:
+  - author: rebe83
+    changes:
+      - type: Add
+        message: Add advanced delivery research, mail bags of holding, and advanced courier cyborg module
+    id: 216
+    time: '2026-11-14T18:54:38.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/305
   - author: MattFright
     changes:
       - type: Remove
