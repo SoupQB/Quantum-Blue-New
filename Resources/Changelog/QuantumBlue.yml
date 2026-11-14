@@ -1,4 +1,11 @@
 Entries:
+  - author: CrimsonAnnie
+    changes:
+      - type: Add
+        message: Salvage cyborgs have received a set of unique laws, go pester them about it!
+    id: 217
+    time: '2026-11-14T18:56:10.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/306
   - author: rebe83
     changes:
       - type: Add
