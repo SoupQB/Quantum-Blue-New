@@ -1,4 +1,13 @@
 Entries:
+  - author: soup4food
+    changes:
+      - type: Add
+        message: Slowdowns on chem puddles are back! Woo
+      - type: Fix
+        message: A client stutter bug
+    id: 220
+    time: '2026-11-14T19:08:00.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/321
   - author: MattFright
     changes:
       - type: Fix
