@@ -50,6 +50,8 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      enum.CamWarpUiKey.Key: # Goobstation - AI Camera Jumping
+        type: AiCameraWarpBoundUserInterface
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -60,6 +62,8 @@
         toggleAction: ActionAGhostShowCharacterRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+      enum.CamWarpUiKey.Key: # Goobstation - AI Camera Jumping
+        toggleAction: ActionJumpToCameraGoobstation
   - type: CrewMonitoringConsole
     alertsEnabled: false # QB - disable AI core crew monitor beeps
   - type: GeneralStationRecordConsole
