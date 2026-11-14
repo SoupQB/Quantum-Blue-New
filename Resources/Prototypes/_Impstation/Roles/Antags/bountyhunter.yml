@@ -9,6 +9,7 @@
   - !type:DepartmentTimeRequirement
     department: Security
     time: 5h
+  previewStartingGear: BountyHunterGear
 
 - type: startingGear
   id: BountyHunterGear

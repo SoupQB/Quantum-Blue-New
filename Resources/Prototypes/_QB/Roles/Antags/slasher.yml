@@ -6,6 +6,7 @@
   playTimeTracker: AntagSlasher
   objective: roles-antag-slasher-objective
   guides: [ ]
+  previewStartingGear: SlasherGear
 
 - type: entity
   parent: BaseMindRoleAntag
@@ -17,8 +18,7 @@
     roleType: SoloAntagonist
   - type: GibImmune
   - type: SlasherMindRole #This is needed for MCQ traits tracking
-
-
+  
 - type: startingGear
   id: SlasherGear
   equipment:
