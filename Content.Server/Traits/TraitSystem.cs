@@ -8,6 +8,7 @@ using Robust.Shared.Prototypes;
 using Content.Server.Body.Systems; // imp
 using Content.Shared.Tag; // imp
 using Content.Shared.Preferences; // QB
+using Content.Server.Mind; // QB
 
 namespace Content.Server.Traits;
 
@@ -18,6 +19,8 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly BodySystem _bodySystem = default!; // imp
     [Dependency] private readonly TagSystem _tagSystem = default!; // imp
+    [Dependency] private readonly MindSystem _mindSystem = default!; // QB
+    [Dependency] private readonly SharedRoleSystem _roleSystem = default!; // QB
 
     public override void Initialize()
     {
@@ -119,6 +122,14 @@ public sealed class TraitSystem : EntitySystem
             if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, mob) ||
                 _whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, mob))
                 continue;
+
+            // Skip traits if the player's mind has a blacklisted antagonist role. - QB
+            if (traitPrototype.MindRoleBlacklist != null &&
+                _mindSystem.TryGetMind(mob, out var mindId, out var mind) &&
+                _roleSystem.MindHasRole((mindId, mind), traitPrototype.MindRoleBlacklist))
+            {
+                continue;
+            }
 
             // Add components to the body or specified organ.
             if (traitPrototype.Organ != null)

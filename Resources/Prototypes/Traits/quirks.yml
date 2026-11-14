@@ -10,6 +10,9 @@
   # imp addition starts
   cost: -12
   # imp addition ends
+  mindRoleBlacklist:
+    components:
+    - SlasherMindRole
 
 - type: trait
   id: LightweightDrunk
