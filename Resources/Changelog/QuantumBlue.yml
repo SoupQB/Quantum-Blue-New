@@ -1,4 +1,11 @@
 Entries:
+  - author: MattFright
+    changes:
+      - type: Tweak
+        message: 'Dash: Fixed the cables in engi, but now you only get 1 SMES.'
+    id: 218
+    time: '2026-11-14T19:01:57.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/314
   - author: CrimsonAnnie
     changes:
       - type: Add
