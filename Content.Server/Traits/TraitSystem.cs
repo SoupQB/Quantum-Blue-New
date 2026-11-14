@@ -1,3 +1,4 @@
+
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -5,7 +6,7 @@ using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
-using Content.Server.Body.Systems; // imp
+using Content.Shared.Body; // imp
 using Content.Shared.Tag; // imp
 using Content.Shared.Preferences; // QB
 using Content.Server.Mind; // QB
@@ -17,7 +18,6 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly BodySystem _bodySystem = default!; // imp
     [Dependency] private readonly TagSystem _tagSystem = default!; // imp
     [Dependency] private readonly MindSystem _mindSystem = default!; // QB
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!; // QB
@@ -134,19 +134,20 @@ public sealed class TraitSystem : EntitySystem
             // Add components to the body or specified organ.
             if (traitPrototype.Organ != null)
             {
-                foreach (var organ in _bodySystem.GetBodyOrgans(mob))
+                if (TryComp<BodyComponent>(mob, out var body))
                 {
-                    if (traitPrototype.Organ is { } organTag &&
-                        _tagSystem.HasTag(organ.Id, organTag))
+                    foreach (var organ in body.Organs?.ContainedEntities ?? [])
                     {
-                        EntityManager.AddComponents(organ.Id, traitPrototype.Components);
+                        if (_tagSystem.HasTag(organ, traitPrototype.Organ.Value))
+                        {
+                            EntityManager.AddComponents(organ, traitPrototype.Components);
+                        }
                     }
                 }
             }
-            else
+            else if (traitPrototype.Components.Count > 0)
             {
-                if (traitPrototype.Components.Count > 0)
-                    EntityManager.AddComponents(mob, traitPrototype.Components, false);
+                EntityManager.AddComponents(mob, traitPrototype.Components, false);
             }
 
             // Apply trait specials.
