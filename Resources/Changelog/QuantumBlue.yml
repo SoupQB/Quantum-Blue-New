@@ -1,4 +1,21 @@
 Entries:
+  - author: AlinaNova21
+    changes:
+      - type: Add
+        message: >-
+          The station AI has a "Jump to camera" action with a searchable camera list and a station map; click a camera
+          to jump to it.
+      - type: Add
+        message: >-
+          Security bodycams, available in the SecDrobe and as a neck loadout for security roles. The AI can see through
+          them.
+      - type: Add
+        message: NoPro camera, which gives the wearer AI vision while worn.
+      - type: Tweak
+        message: pAIs now give the station AI a small area of vision. Syndicate pAIs do not.
+    id: 221
+    time: '2026-11-14T19:10:05.0000000+00:00'
+    url: https://github.com/QuantumBlueSS14/Quantum-Blue-New/pull/322
   - author: soup4food
     changes:
       - type: Add
